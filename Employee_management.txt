@@ -1,0 +1,337 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Employee {
+  private int id;
+  private String name;
+  private int age;
+  private double salary;
+
+  public Employee(int id, String name, int age, double salary) {
+    this.id = id;
+    this.name = name;
+    this.age = age;
+    this.salary = salary;
+  }
+  
+  
+  
+  
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+  public int getAge() {
+    return age;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  public double getSalary() {
+    return salary;
+  }
+
+  public void setSalary(double salary) {
+    this.salary = salary;
+  }
+
+  @Override
+  public String toString() {
+    return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + "]";
+  }
+}
+
+class EmployeeManagementSystem {
+  private ArrayList<Employee> employees = new ArrayList<Employee>();
+
+  public void addEmployee(Employee e) {
+    employees.add(e);
+  }
+
+  public void removeEmployee(int id) {
+    for (int i = 0; i < employees.size(); i++) {
+      Employee e = employees.get(i);
+      if (e.getId() == id) {
+        employees.remove(i);
+        break;
+      }
+    }
+  }
+
+  public void displayEmployees() {
+    for (Employee e : employees) {
+      System.out.println(e);
+    }
+  }
+}
+
+
+class Leave {
+    private int id2;
+    private String name2;
+    private String description2;
+    private String eligibilityRules;
+
+  public Leave( int id2, String name2, String description2 , String eligibilityRules) {
+    this.id2 = id2;
+    this.name2 = name2;
+    this.description2 = description2;
+    this.eligibilityRules = eligibilityRules;
+  }
+
+  public int getId2() {
+    return id2;
+  }
+
+  public void setId2(int id2) {
+    this.id2 = id2;
+  }
+
+  public String getName2() {
+    return name2;
+  }
+
+  public void setName2(String name2) {
+    this.name2 = name2;
+  }
+  public String getdescription2() {
+    return description2;
+  }
+
+  public void setdescription2(String description2) {
+    this.description2 = description2;
+  }
+
+  public String geteligibilityRules() {
+    return eligibilityRules;
+  }
+
+  public void seteligibilityRules(String eligibilityRules) {
+    this.eligibilityRules = eligibilityRules;
+  }
+
+  @Override
+  public String toString() {
+    return " Leave[id=" + id2 + ", name=" + name2 + ", description=" + description2 + ", eligibilityRules=" + eligibilityRules + "]";
+  }
+}
+
+class LeaveManagementSystem {
+  private ArrayList<Leave> Leave = new ArrayList<Leave>();
+
+  public void addLeave(Leave l) {
+    Leave.add(l);
+  }
+
+  public void removeLeave(int id2) {
+    for (int i = 0; i < Leave.size(); i++) {
+      Leave l = Leave.get(i);
+      if (l.getId2() == id2) {
+        Leave.remove(i);
+        break;
+      }
+    }
+  }
+
+  public void displayLeave() {
+    for (Leave l : Leave) {
+      System.out.println(l);
+    }
+  }
+}
+
+class Holiday {
+    private int id3;
+    private int date;  
+    private String description3;
+
+  public Holiday( int id3,  int date , String description3) {
+    this.id3 = id3;
+    this.date  = date ;
+    this.description3 = description3;
+   
+  }
+
+  public int getId3() {
+    return id3;
+  }
+
+  public void setId3(int id3) {
+    this.id3 = id3;
+  }
+
+  public int getdate() {
+    return date;
+  }
+
+  public void setdate(int date) {
+    this.date = date;
+  }
+  public String getdescription3() {
+    return description3;
+  }
+
+  public void setdescription3(String description3) {
+    this.description3 = description3;
+  }
+
+ 
+
+  @Override
+  public String toString() {
+    return "Holiday [id=" + id3 + ", date =" + date + ", description=" + description3 + "]";
+  }
+}
+
+class HolidayManagementSystem {
+  private ArrayList<Holiday> Holiday = new ArrayList<Holiday>();
+
+  public void addHoliday(Holiday h) {
+    Holiday.add(h);
+  }
+
+  public void removeHoliday(int id3) {
+    for (int i = 0; i < Holiday.size(); i++) {
+      Holiday h = Holiday.get(i);
+      if (h.getId3() == id3) {
+        Holiday.remove(i);
+        break;
+      }
+    }
+  }
+
+  public void displayHoliday() {
+    for (Holiday h : Holiday) {
+      System.out.println(h);
+    }
+  }
+}
+
+
+public class Main {
+  public static void main(String[] args) {
+    EmployeeManagementSystem ems = new EmployeeManagementSystem();
+     Scanner sc = new Scanner(System.in);
+     LeaveManagementSystem lms = new LeaveManagementSystem();
+     HolidayManagementSystem hms = new HolidayManagementSystem();
+   
+    int choice = 0;
+    while (choice != 10) {
+      System.out.println("1. Add Employee");
+      System.out.println("2. Remove Employee");
+      System.out.println("3. Display Employees");
+      System.out.println("4. Add Leave");
+      System.out.println("5. Remove Leave");
+      System.out.println("6. Display Leave");
+      System.out.println("7. Add Holiday");
+      System.out.println("8. Remove Holiday");
+      System.out.println("9. Display Holiday");
+      System.out.println("10. Exit");
+      System.out.print("Enter your choice: ");
+      choice = sc.nextInt();
+      sc.nextLine();
+      switch (choice) {
+        case 1:
+          System.out.print("Enter Employee ID: ");
+          int id = sc.nextInt();
+          sc.nextLine();
+          System.out.print("Enter Employee Name: ");
+          String name = sc.nextLine();
+          System.out.print("Enter Employee Age: ");
+          int age = sc.nextInt();
+          sc.nextLine();
+          System.out.print("Enter Employee Salary: ");
+          double salary = sc.nextDouble();
+          sc.nextLine();
+          Employee e = new Employee(id, name, age, salary);
+          ems.addEmployee(e);
+          System.out.println("Employee added successfully!");
+          break;
+          case 2:
+          System.out.print("Enter Employee ID to remove: ");
+          int removeId = sc.nextInt();
+          sc.nextLine();
+          ems.removeEmployee(removeId);
+          System.out.println("Employee removed successfully!");
+          break;
+          case 3:
+          System.out.println("List of Employees:");
+          ems.displayEmployees();
+          break;
+           case 4:
+          System.out.print("Enter Leave ID: ");
+          int id2 = sc.nextInt();
+          sc.nextLine();
+          System.out.print("Enter Leave Name: ");
+          String name2 = sc.nextLine();
+          System.out.print("Enter Leave description: ");
+          String description2 = sc.nextLine();
+          sc.nextLine();
+          System.out.print("Enter Leave eligibilityRules: ");
+          String eligibilityRules = sc.nextLine();
+          sc.nextLine();
+          Leave l = new Leave(id2, name2, description2, eligibilityRules);
+          lms.addLeave(l);
+          System.out.println("Leave added successfully!");
+          break;
+          case 5:
+          System.out.print("Enter Leave ID to remove: ");
+          int removeId2 = sc.nextInt();
+          sc.nextLine();
+          lms.removeLeave(removeId2);
+          System.out.println("Leave removed successfully!");
+          break;
+          case 6:
+          System.out.println("List of Leave:");
+          lms.displayLeave();
+          break;
+          case 7:
+          System.out.print("Enter Holiday ID: ");
+          int id3 = sc.nextInt();
+          sc.nextLine();
+          System.out.print("Enter  date: ");
+          int date = sc.nextInt();
+          System.out.print("Enter Holiday description: ");
+          String description3 = sc.nextLine();
+          sc.nextLine();
+          
+          Holiday h = new Holiday(id3, date, description3);
+          hms.addHoliday(h);
+          System.out.println("Holiday added successfully!");
+          break;
+          case 8:
+          System.out.print("Enter Holiday ID to remove: ");
+          int removeId3 = sc.nextInt();
+          sc.nextLine();
+          hms.removeHoliday(removeId3);
+          System.out.println("Holiday removed successfully!");
+          break;
+          case 9:
+          System.out.println("List of Holiday:");
+          hms.displayHoliday();
+          break;
+          case 10:
+          System.out.println("Exiting Employee Management System...");
+          break;
+          default:
+          System.out.println("Invalid choice. Try again.");
+          break;
+          }
+          }
+          sc.close();
+          }
+          }
